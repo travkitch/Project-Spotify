@@ -1,0 +1,17 @@
+{
+	"name": "MoveToProd",
+	"properties": {
+		"content": {
+			"query": "INSERT INTO spotifyprod.playlist \nSELECT distinct * from staging.playlist ",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "sptoifydwh",
+				"poolName": "sptoifydwh"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

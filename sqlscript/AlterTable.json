@@ -1,0 +1,17 @@
+{
+	"name": "AlterTable",
+	"properties": {
+		"content": {
+			"query": "alter table [spotifyprod].playlist\nalter column albumName varchar(255)",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "sptoifydwh",
+				"poolName": "sptoifydwh"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}
