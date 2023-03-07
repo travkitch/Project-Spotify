@@ -1,0 +1,11 @@
+{
+	"name": "ProjectDashboard",
+	"properties": {
+		"annotations": [],
+		"type": "PowerBIWorkspace",
+		"typeProperties": {
+			"workspaceID": "dataengineerproject",
+			"tenantID": "40399c96-d3b4-4234-ae80-796800dd7481"
+		}
+	}
+}
