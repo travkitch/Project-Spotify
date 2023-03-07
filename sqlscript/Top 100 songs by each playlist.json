@@ -1,0 +1,17 @@
+{
+	"name": "Top 100 songs by each playlist",
+	"properties": {
+		"content": {
+			"query": "--Display each top 100 songs by each playlist \n\n--Playlist discover weekly\nSELECT distinct TOP(100)\n[playlist]\n,[trackName]\n,[artist]\n,[albumName]\n,[popularity]\n FROM [staging].[playlist]\n where [playlist] = 'Discover Weekly'\n order by [popularity]; \n\n\n--playlist daily mix 2\nSELECT distinct TOP(100)\n[playlist]\n,[trackName]\n,[artist]\n,[albumName]\n,[popularity]\n FROM [staging].[playlist]\n where [playlist] = 'Daily Mix 2'\n order by [popularity];\n\n--Daily mix 4\nSELECT distinct TOP(100)\n[playlist]\n,[trackName]\n,[artist]\n,[albumName]\n,[popularity]\n FROM [staging].[playlist]\n where [playlist] = 'Daily Mix 4'\n order by [popularity];",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "sptoifydwh",
+				"poolName": "sptoifydwh"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}
