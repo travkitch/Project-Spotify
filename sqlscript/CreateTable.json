@@ -1,0 +1,17 @@
+{
+	"name": "CreateTable",
+	"properties": {
+		"content": {
+			"query": "GO\nCREATE TABLE [staging].[playlist](\n        songId VARCHAR(45),\n        playlist VARCHAR(45),\n        trackName VARCHAR(45),\n        artist VARCHAR(45),\n        albumName Varchar(45),\n        popularity INT\n)\nGO\nCREATE TABLE [spotifyprod].[playlist](\n        songId VARCHAR(45),\n        playlist VARCHAR(45),\n        trackName VARCHAR(45),\n        artist VARCHAR(45),\n        albumName Varchar(45),\n        popularity INT\n)",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "master",
+				"poolName": "Built-in"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}
