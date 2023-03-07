@@ -2,7 +2,7 @@
 	"name": "MoveToProd",
 	"properties": {
 		"content": {
-			"query": "INSERT INTO spotifyprod.playlist \nSELECT distinct * from staging.playlist ",
+			"query": "--Copies distinct data from the staging table into the production data table\nINSERT INTO spotifyprod.playlist \nSELECT * from staging.playlist \nWHERE songId NOT IN (SELECT DISTINCT songId from staging.playlist)",
 			"metadata": {
 				"language": "sql"
 			},
