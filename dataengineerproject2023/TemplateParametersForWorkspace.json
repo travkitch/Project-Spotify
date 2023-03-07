@@ -5,8 +5,14 @@
 		"workspaceName": {
 			"value": "dataengineerproject2023"
 		},
+		"GitHub_credential": {
+			"value": ""
+		},
 		"dataengineerproject2023-WorkspaceDefaultSqlServer_connectionString": {
 			"value": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=tcp:dataengineerproject2023.sql.azuresynapse.net,1433;Initial Catalog=@{linkedService().DBName}"
+		},
+		"GitHub_properties_typeProperties_username": {
+			"value": "fwu27"
 		},
 		"dataengineerproject2023-WorkspaceDefaultStorage_properties_typeProperties_url": {
 			"value": "https://dataengineerproject.dfs.core.windows.net"

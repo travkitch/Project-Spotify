@@ -7,10 +7,18 @@
 			"metadata": "Workspace name",
 			"defaultValue": "dataengineerproject2023"
 		},
+		"GitHub_credential": {
+			"type": "secureString",
+			"metadata": "Secure string for 'credential' of 'GitHub'"
+		},
 		"dataengineerproject2023-WorkspaceDefaultSqlServer_connectionString": {
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'dataengineerproject2023-WorkspaceDefaultSqlServer'",
 			"defaultValue": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=tcp:dataengineerproject2023.sql.azuresynapse.net,1433;Initial Catalog=@{linkedService().DBName}"
+		},
+		"GitHub_properties_typeProperties_username": {
+			"type": "string",
+			"defaultValue": "fwu27"
 		},
 		"dataengineerproject2023-WorkspaceDefaultStorage_properties_typeProperties_url": {
 			"type": "string",
@@ -190,6 +198,30 @@
 			]
 		},
 		{
+			"name": "[concat(parameters('workspaceName'), '/GitHub')]",
+			"type": "Microsoft.Synapse/workspaces/linkedServices",
+			"apiVersion": "2019-06-01-preview",
+			"properties": {
+				"annotations": [],
+				"type": "GitHub",
+				"typeProperties": {
+					"username": "[parameters('GitHub_properties_typeProperties_username')]",
+					"credential": {
+						"type": "SecureString",
+						"value": "[parameters('GitHub_credential')]"
+					},
+					"encryptedCredential": "ew0KICAiVmVyc2lvbiI6ICIyMDE3LTExLTMwIiwNCiAgIlByb3RlY3Rpb25Nb2RlIjogIktleSIsDQogICJTZWNyZXRDb250ZW50VHlwZSI6ICJQbGFpbnRleHQiLA0KICAiQ3JlZGVudGlhbElkIjogIlNZTkFQU0VARTQ3NEIxMDEtQTIyRi00NjY5LTlEQTQtRjI1NDYxRDRFOTM3X2Y5NDIxY2QxLTk2ZTItNDQ1NC04MGI4LWIxMDM5YTk0MjdjOSINCn0="
+				},
+				"connectVia": {
+					"referenceName": "AutoResolveIntegrationRuntime",
+					"type": "IntegrationRuntimeReference"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('workspaceId'), '/integrationRuntimes/AutoResolveIntegrationRuntime')]"
+			]
+		},
+		{
 			"name": "[concat(parameters('workspaceName'), '/dataengineerproject2023-WorkspaceDefaultSqlServer')]",
 			"type": "Microsoft.Synapse/workspaces/linkedServices",
 			"apiVersion": "2019-06-01-preview",
@@ -260,6 +292,38 @@
 				"typeProperties": {}
 			},
 			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('workspaceName'), '/CreateTable')]",
+			"type": "Microsoft.Synapse/workspaces/sqlscripts",
+			"apiVersion": "2019-06-01-preview",
+			"properties": {
+				"content": {
+					"query": "GO\nCREATE TABLE [staging].[playlist](\n        songId VARCHAR(45),\n        playlist VARCHAR(45),\n        trackName VARCHAR(45),\n        artist VARCHAR(45),\n        albumName Varchar(45),\n        popularity INT\n)\nGO\nCREATE TABLE [spotifyprod].[playlist](\n        songId VARCHAR(45),\n        playlist VARCHAR(45),\n        trackName VARCHAR(45),\n        artist VARCHAR(45),\n        albumName Varchar(45),\n        popularity INT\n)",
+					"metadata": {
+						"language": "sql"
+					},
+					"currentConnection": {
+						"databaseName": "master",
+						"poolName": "Built-in"
+					},
+					"resultLimit": 5000
+				},
+				"type": "SqlQuery"
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('workspaceName'), '/sptoifydwh')]",
+			"type": "Microsoft.Synapse/workspaces/sqlPools",
+			"apiVersion": "2019-06-01-preview",
+			"properties": {
+				"collation": "SQL_Latin1_General_CP1_CI_AS",
+				"maxSizeBytes": 263882790666240,
+				"annotations": []
+			},
+			"dependsOn": [],
+			"location": "eastus"
 		}
 	]
 }
