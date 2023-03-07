@@ -3,7 +3,7 @@
 	"properties": {
 		"description": "Top 10 artist by number the popularity",
 		"content": {
-			"query": "SELECT distinct TOP(10)  [songId]\n,[playlist]\n,[trackName]\n,[artist]\n,[albumName]\n,[popularity]\n FROM [staging].[playlist]\norder by [popularity];",
+			"query": "SELECT distinct TOP(10)  [songId]\n,[playlist]\n,[trackName]\n,[artist]\n,[albumName]\n,[popularity]\n FROM [staging].[playlist] --in staging tables\norder by [popularity];",
 			"metadata": {
 				"language": "sql"
 			},
