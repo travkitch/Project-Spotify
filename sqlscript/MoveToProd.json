@@ -1,0 +1,17 @@
+{
+	"name": "MoveToProd",
+	"properties": {
+		"content": {
+			"query": "--Copies distinct data from the staging table into the production data table\nINSERT INTO spotifyprod.playlist \nSELECT * from staging.playlist \nWHERE songId NOT IN (SELECT DISTINCT songId from staging.playlist)\n--AND songTimeStamp NOT IN ()",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "sptoifydwh",
+				"poolName": "sptoifydwh"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}
