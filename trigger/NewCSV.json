@@ -1,0 +1,25 @@
+{
+	"name": "NewCSV",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "Pipeline 1",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "BlobEventsTrigger",
+		"typeProperties": {
+			"blobPathBeginsWith": "/dataengineerproject/blobs/spotify_datafiles",
+			"blobPathEndsWith": ".csv",
+			"ignoreEmptyBlobs": true,
+			"scope": "/subscriptions/9e15a9f7-fa93-41fe-975a-ed37f880836b/resourceGroups/DataEngineerProject2023/providers/Microsoft.Storage/storageAccounts/dataengineerproject",
+			"events": [
+				"Microsoft.Storage.BlobCreated"
+			]
+		}
+	}
+}
