@@ -1,0 +1,18 @@
+{
+	"name": "PROD_counts",
+	"properties": {
+		"description": "Counts of various variables in PROD.",
+		"content": {
+			"query": "--Top Artist \nSELECT TOP (132) artist as 'Artist Name', COUNT(*) as 'Count'\n FROM [spotifyprod].[playlist]\n GROUP BY [artist]--, popularity--, [popularity]\n ORDER BY COUNT(*) DESC;\n\n--Genre\n SELECT TOP (132) CASE WHEN artist_genre is null then 'no genre' else artist_genre END as Genre, \n COUNT(*) as 'Count'\n FROM [spotifyprod].[playlist]\n GROUP BY [artist_genre]--, popularity--, [popularity]\n ORDER BY COUNT(*) DESC;",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "sptoifydwh",
+				"poolName": "sptoifydwh"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}
