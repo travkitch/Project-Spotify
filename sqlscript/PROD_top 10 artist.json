@@ -1,5 +1,5 @@
 {
-	"name": "Top 10 artist in Prod",
+	"name": "PROD_top 10 artist",
 	"properties": {
 		"description": "updated query with columns, and null values",
 		"content": {
