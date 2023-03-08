@@ -1,0 +1,18 @@
+{
+	"name": "PROD_top 10 artist",
+	"properties": {
+		"description": "updated query with columns, and null values",
+		"content": {
+			"query": "--Top 10 \nSELECT TOP (10) \n[trackName] as 'Track Name'\n,[artist] as 'Artist'\n,[albumName] as 'Album Name'\n,[popularity] as 'Popularity'\n,[added_at] as 'Date added'\n,CASE WHEN artist_genre is null then 'no genre' else artist_genre END as Genre\n FROM [spotifyprod].[playlist]\n order by [popularity];",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "sptoifydwh",
+				"poolName": "sptoifydwh"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

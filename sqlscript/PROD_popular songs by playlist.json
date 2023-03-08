@@ -1,0 +1,17 @@
+{
+	"name": "PROD_popular songs by playlist",
+	"properties": {
+		"content": {
+			"query": "--select DISTINCT playlist\n--from spotifyprod.playlist;\n\n--Playlist: Discover Weekly\nSELECT distinct TOP(101)\n[playlist] as 'Playlist'\n,[trackName] as 'Track Name'\n,[artist] as 'Artist'\n,[albumName] as 'Album Name'\n,[popularity] as 'Popularity'\n,CASE WHEN artist_genre is null then 'no genre' else artist_genre END as Genre\n FROM [spotifyprod].[playlist]\n where [playlist] = 'Discover Weekly'\n order by [popularity] ASC; \n\n --playlist daily mix 2\nSELECT distinct TOP(101)\n[playlist] as 'Playlist'\n,[trackName] as 'Track Name'\n,[artist] as 'Artist'\n,[albumName] as 'Album Name'\n,[popularity] as 'Popularity'\n,CASE WHEN artist_genre is null then 'no genre' else artist_genre END as Genre\n FROM [spotifyprod].[playlist]\n where [playlist] = 'Daily Mix 2'\n order by [popularity] ASC;\n\n --Daily mix 4\nSELECT distinct TOP(100)\n[playlist] as 'Playlist'\n,[trackName] as 'Track Name'\n,[artist] as 'Artist'\n,[albumName] as 'Album Name'\n,[popularity] as 'Popularity'\n,CASE WHEN artist_genre is null then 'no genre' else artist_genre END as Genre\n FROM [spotifyprod].[playlist]\n where [playlist] = 'Daily Mix 4'\n order by [popularity];\n",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "sptoifydwh",
+				"poolName": "sptoifydwh"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}
