@@ -4,7 +4,7 @@
 		"annotations": [],
 		"type": "PowerBIWorkspace",
 		"typeProperties": {
-			"workspaceID": "dataengineerproject2023",
+			"workspaceID": "9e15a9f7-fa93-41fe-975a-ed37f880836b",
 			"tenantID": "40399c96-d3b4-4234-ae80-796800dd7481"
 		}
 	}
