@@ -1,5 +1,5 @@
 {
-	"name": "Popular songs for each playlist",
+	"name": "Popular songs for each playlist in Prod",
 	"properties": {
 		"content": {
 			"query": "SELECT distinct TOP(101)\n[playlist] as 'Playlist'\n,[trackName] as 'Track Name'\n,[artist] as 'Artist'\n,[albumName] as 'Album Name'\n,[popularity] as 'Popularity'\n,CASE WHEN artist_genre is null then 'no genre' else artist_genre END as Genre\n FROM [spotifyprod].[playlist]\n where [playlist] = 'Discover Weekly'\n order by [popularity] ASC; ",
