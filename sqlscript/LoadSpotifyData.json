@@ -2,7 +2,7 @@
 	"name": "LoadSpotifyData",
 	"properties": {
 		"content": {
-			"query": "--Copies data from the CSV file into the data staging table within the Spotify Data Warehouse\nCOPY INTO staging.playlist\n(songId 1, added_at 2, playlist 3, trackName 4, artist 5, artist_genre 6, albumName 7, popularity 8)\nFROM 'https://dataengineerproject.dfs.core.windows.net/dataengineerproject/spotify_datafiles/tracks_csv.csv'\nWITH\n(\n\tFILE_TYPE = 'CSV'\n\t,MAXERRORS = 0\n\t,FIRSTROW = 2 -- skip header row\n\t,ERRORFILE = 'https://dataengineerproject.dfs.core.windows.net/dataengineerproject/'\n)\n--END\nGO",
+			"query": "--Copies data from the CSV file into the data staging table within the Spotify Data Warehouse\nCOPY INTO staging.playlist\n(songId 1, added_at 2, playlist 3, trackName 4, artist 5, artist_genre 6, albumName 7, popularity 8)\nFROM 'https://dataengineerproject.dfs.core.windows.net/dataengineerproject/spotify_datafiles/tracks3.csv'\nWITH\n(\n\tFILE_TYPE = 'CSV'\n\t,MAXERRORS = 0\n\t,FIRSTROW = 2 -- skip header row\n\t,ERRORFILE = 'https://dataengineerproject.dfs.core.windows.net/dataengineerproject/'\n)\n--END\nGO",
 			"metadata": {
 				"language": "sql"
 			},
