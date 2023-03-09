@@ -3,7 +3,7 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "Get Metadata1",
+				"name": "GetFiles",
 				"type": "GetMetadata",
 				"dependsOn": [],
 				"policy": {
@@ -22,22 +22,17 @@
 					"fieldList": [
 						"childItems"
 					],
-					"storeSettings": {
-						"type": "AzureBlobStorageReadSettings",
-						"recursive": true,
-						"enablePartitionDiscovery": false
-					},
 					"formatSettings": {
 						"type": "DelimitedTextReadSettings"
 					}
 				}
 			},
 			{
-				"name": "ForEach1",
+				"name": "ParseThruForLatest",
 				"type": "ForEach",
 				"dependsOn": [
 					{
-						"activity": "Get Metadata1",
+						"activity": "GetFiles",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -146,11 +141,11 @@
 				}
 			},
 			{
-				"name": "Set variable3",
+				"name": "SetsLatestVar",
 				"type": "SetVariable",
 				"dependsOn": [
 					{
-						"activity": "ForEach1",
+						"activity": "ParseThruForLatest",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -166,11 +161,11 @@
 				}
 			},
 			{
-				"name": "Get Metadata3",
-				"type": "GetMetadata",
+				"name": "Script1",
+				"type": "Script",
 				"dependsOn": [
 					{
-						"activity": "Set variable3",
+						"activity": "SetsLatestVar",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -185,26 +180,8 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"dataset": {
-						"referenceName": "DelimitedText2",
-						"type": "DatasetReference",
-						"parameters": {
-							"FileName": {
-								"value": "@variables('nameOfFile')",
-								"type": "Expression"
-							}
-						}
-					},
-					"fieldList": [
-						"itemName"
-					],
-					"storeSettings": {
-						"type": "AzureBlobStorageReadSettings",
-						"enablePartitionDiscovery": false
-					},
-					"formatSettings": {
-						"type": "DelimitedTextReadSettings"
-					}
+					"scripts": [],
+					"scriptBlockExecutionTimeout": "02:00:00"
 				}
 			}
 		],
