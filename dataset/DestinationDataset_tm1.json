@@ -1,0 +1,21 @@
+{
+	"name": "DestinationDataset_tm1",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "dataengineerproject2023-WorkspaceDefaultStorage",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileSystem": "dataengineerproject"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"quoteChar": "\""
+		},
+		"schema": []
+	}
+}
