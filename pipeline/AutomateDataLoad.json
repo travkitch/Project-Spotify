@@ -1,5 +1,5 @@
 {
-	"name": "Pipeline 1",
+	"name": "AutomateDataLoad",
 	"properties": {
 		"activities": [
 			{
@@ -146,11 +146,31 @@
 				}
 			},
 			{
-				"name": "Lookup1",
-				"type": "Lookup",
+				"name": "Set variable3",
+				"type": "SetVariable",
 				"dependsOn": [
 					{
 						"activity": "ForEach1",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "nameOfFile",
+					"value": {
+						"value": "@variables('latestFile')",
+						"type": "Expression"
+					}
+				}
+			},
+			{
+				"name": "Get Metadata3",
+				"type": "GetMetadata",
+				"dependsOn": [
+					{
+						"activity": "Set variable3",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -165,28 +185,26 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"source": {
-						"type": "DelimitedTextSource",
-						"storeSettings": {
-							"type": "AzureBlobStorageReadSettings",
-							"recursive": true,
-							"enablePartitionDiscovery": false
-						},
-						"formatSettings": {
-							"type": "DelimitedTextReadSettings"
-						}
-					},
 					"dataset": {
 						"referenceName": "DelimitedText2",
 						"type": "DatasetReference",
 						"parameters": {
 							"FileName": {
-								"value": "@variables('latestFile')",
+								"value": "@variables('nameOfFile')",
 								"type": "Expression"
 							}
 						}
 					},
-					"firstRowOnly": false
+					"fieldList": [
+						"itemName"
+					],
+					"storeSettings": {
+						"type": "AzureBlobStorageReadSettings",
+						"enablePartitionDiscovery": false
+					},
+					"formatSettings": {
+						"type": "DelimitedTextReadSettings"
+					}
 				}
 			}
 		],
@@ -197,6 +215,9 @@
 			"prevModDate": {
 				"type": "String",
 				"defaultValue": "2020-07-10 15:00:00.000"
+			},
+			"nameOfFile": {
+				"type": "String"
 			}
 		},
 		"annotations": []
