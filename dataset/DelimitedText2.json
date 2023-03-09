@@ -1,10 +1,6 @@
 {
 	"name": "DelimitedText2",
 	"properties": {
-		"linkedServiceName": {
-			"referenceName": "AzureBlobStorage1",
-			"type": "LinkedServiceReference"
-		},
 		"parameters": {
 			"FileName": {
 				"type": "string"
