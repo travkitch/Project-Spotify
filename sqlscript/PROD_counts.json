@@ -3,7 +3,7 @@
 	"properties": {
 		"description": "Counts of various variables in PROD.",
 		"content": {
-			"query": "--Top Artist \nSELECT TOP (132) artist as 'Artist Name', COUNT(*) as 'Count'\n FROM [spotifyprod].[playlist]\n GROUP BY [artist]--artist\n ORDER BY COUNT(*) DESC;\n\n--Genre\n SELECT TOP (132) CASE WHEN artist_genre is null then 'no genre' else artist_genre END as Genre, \n COUNT(*) as 'Count'\n FROM [spotifyprod].[playlist]\n GROUP BY [artist_genre]--artist\n ORDER BY COUNT(*) DESC;",
+			"query": "--Top Artist \nSELECT TOP (50) artist as 'Artist Name', COUNT(*) as 'Count of Top 50 Artist'\n FROM [spotifyprod].[playlist]\n GROUP BY [artist]--artist\n ORDER BY COUNT(*) DESC;\n\n--Genre\n SELECT TOP (132) CASE WHEN artist_genre is null then 'no genre' else artist_genre END as Genre, \n COUNT(*) as 'Count'\n FROM [spotifyprod].[playlist]\n GROUP BY [artist_genre]--artist\n ORDER BY COUNT(*) DESC;",
 			"metadata": {
 				"language": "sql"
 			},
